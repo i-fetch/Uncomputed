@@ -1,7 +1,7 @@
-import CoinSection from "@/components/CoinSection/CoinSection";
-import Features from "@/components/Features/Features";
-import FinalCTA from "@/components/FinalCTA/FinalCTA";
-import Footer from "@/components/Footer/Footer";
+// import CoinSection from "@/components/CoinSection/CoinSection";
+// import Features from "@/components/Features/Features";
+// import FinalCTA from "@/components/FinalCTA/FinalCTA";
+// import Footer from "@/components/Footer/Footer";
 import HeroSection from "@/components/Hero/Hero";
 
 export default function HomePage() {
