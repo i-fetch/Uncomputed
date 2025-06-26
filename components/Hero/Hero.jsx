@@ -15,7 +15,7 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="z-10 flex flex-col items-center justify-center w-full max-w-2xl px-4 backdrop-brightness-90 rounded-xl py-6">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-300 via-orange-400 to-red-500 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(255,165,0,0.7)] animate-pulse">
-          Welcome to <span className="text-white drop-shadow-[0_0_15px_#ffbf00]">BTC 2.0</span>
+          Welcome to <span className="text-white drop-shadow-[0_0_15px_#ffbf00]">BitPulse</span>
         </h1>
 
         <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-orange-100 leading-relaxed tracking-wide drop-shadow-[0_0_10px_rgba(255,165,0,0.4)]">

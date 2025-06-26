@@ -1,5 +1,11 @@
-import LoginForm from "./SignupForm";
+import SignupForm from "./SignupForm";
+import { Toaster } from "sonner";
 
 export default function SignupPage() {
-  return <LoginForm />;
+  return (
+    <>
+      <Toaster richColors position="top-center" />
+      <SignupForm />
+    </>
+  );
 }

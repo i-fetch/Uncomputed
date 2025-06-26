@@ -6,7 +6,7 @@ import HeroSection from "@/components/Hero/Hero";
 
 export default function HomePage() {
   return (
-    <main className="bg-black min-h-screen text-white font-mono">
+    <main className="bg-black min-h-screen text-white font-sans">
       <HeroSection/>
       {/* <Features/>
       <CoinSection/>
