@@ -16,7 +16,7 @@ export async function middleware(req) {
 
   // If not logged in, redirect to sign-in
   if (!token) {
-    return NextResponse.redirect(new URL("/sign-in", req.url));
+    return NextResponse.redirect(new URL("/login", req.url));
   }
 
   // Role-based protection

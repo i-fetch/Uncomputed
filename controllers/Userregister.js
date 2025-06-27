@@ -2,36 +2,60 @@
 
 import { connectToDB } from '@/lib/connectDB';
 import User from '@/models/User';
-import bcrypt from 'bcrypt';
+import Asset from '@/models/asset';
+import { hash } from 'bcryptjs';
+import crypto from 'crypto';
+
+function generateCustomWalletId() {
+  // Format: BITPULSE-XXXXXX-YYYYYY (random hex segments)
+  const part1 = crypto.randomBytes(3).toString('hex').toUpperCase();
+  const part2 = crypto.randomBytes(3).toString('hex').toUpperCase();
+  return `bitpulse-${part1}-${part2}`;
+}
 
 export async function signupAction(prevState, formData) {
   try {
-    const username = formData.get('username');
-    const email = formData.get('email');
-    const password = formData.get('password');
-
-    if (!username || !email || !password) {
-      return { status: 'error', message: 'All fields are required.' };
-    }
-
     await connectToDB();
 
-    const userExists = await User.findOne({ email });
-    if (userExists) {
-      return { status: 'error', message: 'Email already in use.' };
+    const { username, email, password } = Object.fromEntries(formData);
+
+    // Check if user exists
+    const existing = await User.findOne({ email });
+    if (existing) {
+      return { status: 'error', message: 'Email already registered.' };
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // Generate unique wallet_id with custom format
+    let wallet_id;
+    let exists = true;
+    while (exists) {
+      wallet_id = generateCustomWalletId();
+      exists = await User.findOne({ wallet_id });
+    }
 
-    await User.create({
+    // Hash password
+    const hashedPassword = await hash(password, 10);
+
+    // Create user
+    const user = await User.create({
       username,
       email,
       password: hashedPassword,
+      wallet_id,
+      balances: [
+        { coin: 'BTC', amount: 0 },
+        { coin: 'USDT', amount: 0 },
+      ],
     });
 
-    return { status: 'success', message: 'Account created successfully.' };
-  } catch (error) {
-    console.error('Signup error:', error);
-    return { status: 'error', message: 'Something went wrong. Try again.' };
+    // Create Asset documents for the user
+    await Asset.create([
+      { user: user._id, coin: 'BTC', amount: 0 },
+      { user: user._id, coin: 'USDT', amount: 0 },
+    ]);
+
+    return { status: 'success', message: 'Registration successful! Please log in.' };
+  } catch (err) {
+    return { status: 'error', message: 'Registration failed. Try again.' };
   }
 }
