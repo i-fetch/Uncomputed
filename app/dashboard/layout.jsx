@@ -4,7 +4,7 @@ import Sidebar from './Sidebar/Sidebar';
 
 export default function DashboardLayout({ children }) {
   return (
-    <section className="relative min-h-screen flex bg-black overflow-hidden">
+    <section className="relative min-h-screen flex flex-col md:flex-row bg-black overflow-hidden">
       {/* Animated GIF Background */}
       <img
         src="https://i.gifer.com/7Ik1.gif"
