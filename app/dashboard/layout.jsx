@@ -4,7 +4,7 @@ import Sidebar from './Sidebar/Sidebar';
 
 export default function DashboardLayout({ children }) {
   return (
-    <section className="relative min-h-screen flex flex-col md:flex-row bg-black overflow-hidden">
+    <section className="relative min-h-screen flex flex-col md:flex-row bg-black overflow-hidden items-stretch">
       {/* Animated GIF Background */}
       <img
         src="https://i.gifer.com/7Ik1.gif"
@@ -13,12 +13,12 @@ export default function DashboardLayout({ children }) {
       />
 
       {/* Desktop Sidebar */}
-      <div className="hidden md:block">
+      <div className="hidden md:block h-full min-h-screen">
         <Sidebar />
       </div>
 
       {/* Main Content */}
-      <main className="relative flex-1 z-10 p-0 flex flex-col">{children}</main>
+      <main className="relative flex-1 z-10 p-0 flex flex-col h-full min-h-screen">{children}</main>
 
       {/* Bottom Sidebar (App-like Navigation) */}
       <nav className="fixed bottom-0 left-0 w-full z-20 bg-zinc-900 bg-opacity-95 border-t border-zinc-800 flex justify-around items-center py-3 md:hidden">
