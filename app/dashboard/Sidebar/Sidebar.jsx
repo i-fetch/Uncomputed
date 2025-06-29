@@ -42,7 +42,7 @@ const Sidebar = ({ isBottomNav = false }) => {
 
   // Render as sidebar for desktop, with icons
   return (
-    <aside className="w-64 min-h-screen bg-zinc-900 bg-opacity-90 border-r border-zinc-800 p-6 hidden md:block z-20">
+    <aside className="w-64 h-full min-h-screen bg-zinc-900 bg-opacity-90 border-r border-zinc-800 p-6 hidden md:block z-20">
       <h2 className="text-xl font-bold mb-6 text-orange-400">CryptoMine</h2>
       <nav className="flex flex-col space-y-4">
         {navItems.map(({ name, href, icon }) => (
