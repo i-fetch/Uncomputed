@@ -5,7 +5,7 @@ import { FaHome, FaUserCheck, FaBolt, FaWallet, FaChartLine, FaExchangeAlt, FaCo
 
 const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: <FaHome /> },
-  { name: 'Kyc', href: '/dashboard/verification', icon: <FaUserCheck /> },
+  { name: 'KYC', href: '/dashboard/verification', icon: <FaUserCheck /> }, // Updated label and path
   { name: 'Mining', href: '/dashboard/mining', icon: <FaBolt /> },
   { name: 'Portfolio', href: '/dashboard/portfolio', icon: <FaWallet /> },
   { name: 'Market', href: '/dashboard/market', icon: <FaChartLine /> },
@@ -45,7 +45,7 @@ const Sidebar = ({ isBottomNav = false }) => {
     <aside className="w-64 min-h-screen bg-zinc-900 bg-opacity-90 border-r border-zinc-800 p-6 hidden md:block z-20">
       <h2 className="text-xl font-bold mb-6 text-orange-400">CryptoMine</h2>
       <nav className="flex flex-col space-y-4">
-        {navItems.map(({ name, href }) => (
+        {navItems.map(({ name, href, icon }) => (
           <button
             key={href}
             onClick={() => router.push(href)}
