@@ -5,7 +5,7 @@ import { FaHome, FaUserCheck, FaBolt, FaWallet, FaChartLine, FaExchangeAlt, FaCo
 
 const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: <FaHome /> },
-  { name: 'KYC', href: '/dashboard/verification', icon: <FaUserCheck /> }, // Updated label and path
+  { name: 'KYC', href: '/dashboard/verification', icon: <FaUserCheck /> },
   { name: 'Mining', href: '/dashboard/mining', icon: <FaBolt /> },
   { name: 'Portfolio', href: '/dashboard/portfolio', icon: <FaWallet /> },
   { name: 'Market', href: '/dashboard/market', icon: <FaChartLine /> },
@@ -40,7 +40,7 @@ const Sidebar = ({ isBottomNav = false }) => {
     );
   }
 
-  // Render as sidebar for desktop
+  // Render as sidebar for desktop, with icons
   return (
     <aside className="w-64 min-h-screen bg-zinc-900 bg-opacity-90 border-r border-zinc-800 p-6 hidden md:block z-20">
       <h2 className="text-xl font-bold mb-6 text-orange-400">CryptoMine</h2>
@@ -54,7 +54,10 @@ const Sidebar = ({ isBottomNav = false }) => {
             }`}
             style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
           >
-            {name}
+            <div className="flex items-center">
+              {icon}
+              <span className="ml-2">{name}</span>
+            </div>
           </button>
         ))}
       </nav>
