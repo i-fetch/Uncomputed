@@ -4,10 +4,14 @@ import PortfolioSection from './PortfolioSection/PortfolioSection';
 import CoinMarketSection from './CoinMarketSection.jsx/CoinMarketSection';
 import BalanceCard from './BalanceCard/BalanceCard';
 import { getUser } from '@/lib/getUsers';
+import { getUserAssets } from '@/lib/getUserAssets';
 
 export default async function Dashboard() {
   const userData = await getUser();
   if (!userData) return <UnauthorizedMessage />;
+
+  // Fetch assets from DB
+  const balances = await getUserAssets();
 
   return (
     <section className="relative min-h-screen flex bg-black overflow-hidden">
@@ -46,7 +50,7 @@ export default async function Dashboard() {
         </div>
 
         {/* 3. Portfolio Overview */}
-        <PortfolioSection balances={userData.balances} />
+        <PortfolioSection balances={balances} />
 
         {/* 4. Market Overview */}
         <CoinMarketSection />
